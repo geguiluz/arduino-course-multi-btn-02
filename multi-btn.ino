@@ -5,7 +5,8 @@ float pressLength = 0;
 // Instant press
 int optionOne = 100;
 // Two second press
-int optionTwo = 2000;
+int optionTwo = 5000;
+int optionThree = 10000;
 
 int buttonPin = 2;
 
@@ -44,28 +45,25 @@ void loop()
   {
     delay(100); // Lower this number for higher resolution
     pressLength = pressLength + 100;
-    if (pressLength >= optionOne)
-    {
-      Serial.print("Toggling both LEDs");
-      Serial.print('\n');
-      toggleLed(greenLed);
-      toggleLed(redLed);
-      break;
-    }
-
-    /*
-    if (pressLength >= optionTwo)
-    {
-      Serial.print("Toggling green LED");
-      toggleLed(greenLed);
-    }
-    else if (pressLength >= optionOne)
-    {
-      Serial.print("Toggling red LED");
-      toggleLed(redLed);
-    }
-    */
-    // Reset pressLength
-    pressLength = 0;
   }
+  if (pressLength >= optionThree)
+  {
+    Serial.print("Toggling red LED");
+    Serial.print('\n');
+    toggleLed(redLed);
+  }
+  else if (pressLength >= optionTwo)
+  {
+    Serial.print("Toggling green LED");
+    Serial.print('\n');
+    toggleLed(greenLed);
+  }
+  if (pressLength >= optionOne)
+  {
+    Serial.print("Toggling both LEDs");
+    Serial.print('\n');
+    toggleLed(greenLed);
+    toggleLed(redLed);
+  }
+  pressLength = 0;
 }
