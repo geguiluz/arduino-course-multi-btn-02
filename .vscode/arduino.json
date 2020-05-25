@@ -1,0 +1,5 @@
+{
+    "board": "arduino:avr:uno",
+    "sketch": "multi-btn.ino",
+    "port": "/dev/tty.usbmodemFD121"
+}
